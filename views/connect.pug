@@ -1,0 +1,12 @@
+extends layout
+block content
+	h1(style="text-align:center")=title
+	div(style="margin:10%;")
+		form(method="post")
+			.form-group
+				label(for='Identifiant') Identifiant
+				input#id.form-control(type='text', placeholder='id', name="id")
+			.form-group
+				label(for='password') Mot de passe
+				input#password.form-control(type='password', placeholder='Pass', name="pass")
+			button.btn.btn-default(type='submit') OK

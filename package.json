@@ -1,0 +1,25 @@
+{
+  "name": "projet_annuel",
+  "version": "0.0.1",
+  "description": "Formulaire de saisie projet annuel",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "latest",
+    "express": "latest",
+    "fs": "latest",
+    "path": "latest",
+    "pug": "latest",
+    "request": "latest",
+    "passport": "latest",
+    "passport-local": "latest",
+    "connect-flash": "latest",
+    "bcrypt-nodejs": "latest",
+    "cookie-parser": "latest",
+    "aws-sdk": "latest",
+    "mysql": "latest",
+    "express-session": "latest"
+  },
+  "scripts": {
+    "start": "nodejs app.js"
+  }
+}

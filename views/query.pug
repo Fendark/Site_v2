@@ -1,0 +1,14 @@
+extends layout
+block content
+	h1(style="text-align:center")=title
+	h3(style="text-align:center") Bonjour 
+		=nom
+	h3(style="text-align:center") Votre rôle : 
+		=job
+	div(style="margin:10%;")
+		form(method="post")
+			.form-group
+				label Tapez la pathologie
+				input.form-control(type='text' name="pathos")
+			button.btn.btn-default(type='submit') OK
+			input(type="hidden" name="_method" value="put")
