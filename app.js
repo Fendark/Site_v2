@@ -22,14 +22,17 @@ var connectionMySQL = mysql.createConnection({
 	user     : process.env.RDS_USERNAME || "gerome",
 	password : process.env.RDS_PASSWORD || "Koala0311"
 });
+
 connectionMySQL.connect(function(err) {
 	if (err)
 		console.log(err);
 });
+
 connectionMySQL.query("use testprojetannuel");
 
 AWS.config.update({
-	region: "us-west-2"
+	region: "us-west-2",
+	endpoint: process.env.DYNAMO_ENDPOINT
 });
 
 app.set("views", path.join(__dirname, "views"));
@@ -48,27 +51,21 @@ app.use(session({
 
 app.get("/", function(req, res) {
 
-
-
 	var docClient = new AWS.DynamoDB.DocumentClient();
-
-	console.log("TEST");
-
 	var params = {
-		arn:aws:dynamodb:us-west-2:372716168858:table/Meds
-	};
-
-	docClient.query(params, function(err, data) {
+		TableName: "projet_annuel",
+		Key:{
+			"name": "Barry"
+		}
+	}
+	docClient.get(params, function(err, data) {
 		if (err) {
-			console.error("Unable to query. Error:", JSON.stringify(err, null, 2));
+			console.error(JSON.stringify(err, null, 2));
 		} else {
-			console.log("Query succeeded.");
-			console.log(data);
-			};
-		});
-
+			console.log("GetItem succeeded:", JSON.stringify(data, null, 2));
+		}
+	});
 	res.render("connect", {title: "Connexion"});
-	
 });
 
 app.get("/query", function(req, res) {
