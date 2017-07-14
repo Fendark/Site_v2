@@ -20,7 +20,7 @@ var dynamodb = new AWS.DynamoDB();
 var connectionMySQL = mysql.createConnection({
 	host     : process.env.RDS_HOSTNAME || "testprojetannuel.cvtxo4p2k8sn.us-west-2.rds.amazonaws.com",
 	user     : process.env.RDS_USERNAME || "gerome",
-	password : process.env.RDS_PASSWORD || "Koala0311"
+	password : process.env.RDS_PASSWORD
 });
 
 connectionMySQL.connect(function(err) {
